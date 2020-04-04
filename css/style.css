@@ -24,3 +24,31 @@ canvas{
     /* height: 500px; */
     background: #acacac;
 }
+
+p{
+    margin: 2px;
+    padding: 2px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.btn{
+    padding: 5px;
+    color: #ffff;
+    background: #666666;
+    border: none;
+    border-radius: 5px;
+    margin: 2px;
+    font-family: 'Open Sans';
+    font-weight: 200;
+}
+
+.btn:hover{
+    cursor: pointer;
+    background: #858585;
+}
+
+#cant_lineas{
+    border: 1px solid #858585;
+    padding: 4px;
+}

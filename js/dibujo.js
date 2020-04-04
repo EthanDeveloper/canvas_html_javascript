@@ -1,23 +1,47 @@
 let dibujo = document.getElementById("dibujo");
 let lienzo = dibujo.getContext("2d");
+let ancho_dibujo = dibujo.width;
 
-let yinicial = 0;
-let xfinal = 0;
+let btn = document.getElementById("boton");
+btn.addEventListener("click", dibujarLineaConClick);
 
-let lineas = 500;
+let cant_lineas = document.getElementById("cant_lineas");
 
-for(let i = 0; i < lineas; i++ ){
-    yinicial = 10 * i;
-    xfinal = 10 * (i + 1);
+let btn2 = document.getElementById("boton2");
+btn2.addEventListener("click", refrescar);
 
-    dibujarLinea("blue", 0, yinicial, xfinal, 500);
+function refrescar(){
+	location.reload();
 }
 
-function dibujarLinea(color, yinicial, yfinal, xinicial, xfinal){
-    lienzo.beginPath();
-    lienzo.strokeStyle = color;
-    lienzo.moveTo(xinicial, yinicial);
-    lienzo.lineTo(xfinal, yfinal);
-    lienzo.stroke();
-    lienzo.closePath();
+dibujarLineaConClick();
+
+function dibujarLineaConClick(){
+
+	let total_lineas = parseInt(cant_lineas.value);
+
+	// console.log(total_lineas);
+
+	let esp_lineas = ancho_dibujo/total_lineas;
+
+	let yinicial = 0;
+	let xfinal = 0;
+
+	let lineas = total_lineas;
+
+	for(let i = 0; i < lineas; i++ ){
+	    yinicial = esp_lineas * i;
+	    xfinal = esp_lineas * (i + 1);
+
+	    dibujarLinea("blue", 0, yinicial, xfinal, 500);
+	}
+
+	function dibujarLinea(color, yinicial, yfinal, xinicial, xfinal){
+	    lienzo.beginPath();
+	    lienzo.strokeStyle = color;
+	    lienzo.moveTo(xinicial, yinicial);
+	    lienzo.lineTo(xfinal, yfinal);
+	    lienzo.stroke();
+	    lienzo.closePath();
+	}
 }
